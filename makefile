@@ -1,14 +1,15 @@
 COMPILER = g++
 ARGS = -Wall -g
+OBJ_FOLDER = obj/
 
-diag: main.o Matrix.o
-	${COMPILER} ${ARGS} main.o Matrix.o -o diag
+diag: ${OBJ_FOLDER}main.o ${OBJ_FOLDER}Matrix.o
+	${COMPILER} ${ARGS} ${OBJ_FOLDER}main.o ${OBJ_FOLDER}Matrix.o -o diag
 
-main.o: main.cc
-	${COMPILER} ${ARGS} -c main.cc -o main.o
+${OBJ_FOLDER}main.o: main.cc
+	${COMPILER} ${ARGS} -c main.cc -o ${OBJ_FOLDER}main.o
 
-Maze.o: Maze.cc Maze.h
-	${COMPILER} ${ARGS} -c Maze.cc -o Maze.o
+${OBJ_FOLDER}Matrix.o: Matrix.cc Matrix.h
+	${COMPILER} ${ARGS} -c Matrix.cc -o ${OBJ_FOLDER}Matrix.o
 
 clean:
 	rm -f ./*.o
