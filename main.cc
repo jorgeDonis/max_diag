@@ -17,17 +17,17 @@ Matrix smallest_diag(const vector<Matrix>& matrices)
         }
         i++;
     }
-    if (!best_index)
-        return matrices[i];
+    if (best_index != -1)
+        return matrices[best_index];
     else
         return Matrix(3,3);
 }
 
 int main()
 {
-    Matrix m(4, 4, true);
+    Matrix m(5, 5, true);
     vector<Matrix> permutations = m.all_permutations();
-    for (Matrix matrix : permutations)
-        cout << matrix.to_str() << endl;
+    cout << "Smalles diag matrix  (calculated from all permutations): " << endl
+     << smallest_diag(permutations).to_str() << endl;
     return 0;
 }
